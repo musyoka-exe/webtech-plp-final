@@ -1,0 +1,714 @@
+/* --- Global Styles & Variables --- (Same as before) --- */
+:root {
+    --cyan-main: #20c997;
+    --baby-blue-light: #e0f7fa;
+    --baby-blue-accent: #80deea;
+    --white: #ffffff;
+    --dark-text: #333333;
+    --gray-text: #666666;
+    --border-color: #cce7ff;
+    --shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+    --danger-color: #dc3545;
+
+    --bg-color: var(--white);
+    --text-color: var(--dark-text);
+    --card-bg: var(--white);
+    --header-bg: var(--baby-blue-light);
+    --nav-link-color: var(--dark-text);
+    --nav-link-hover: var(--cyan-main);
+    --section-bg: var(--white);
+    --input-bg: var(--white);
+    --input-border: var(--border-color);
+}
+
+body.dark-mode {
+    --bg-color: #1a202c;
+    --text-color: #e2e8f0;
+    --card-bg: #2d3748;
+    --header-bg: #2d3748;
+    --nav-link-color: #e2e8f0;
+    --border-color: #4a5568;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --section-bg: #1a202c;
+    --input-bg: #2d3748;
+    --input-border: #4a5568;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--cyan-main);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--baby-blue-accent);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin-bottom: 0.75em;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--cyan-main);
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+/* --- Header (Same as before) --- */
+header {
+    background-color: var(--header-bg);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--cyan-main);
+}
+
+.logo:hover {
+    color: var(--dark-text);
+}
+
+/* Slightly adjust hover for dark mode if needed */
+body.dark-mode .logo:hover {
+    color: var(--baby-blue-light);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 20px;
+}
+
+.main-nav ul li a {
+    color: var(--nav-link-color);
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    /* Active class for current page */
+    color: var(--nav-link-hover);
+    background-color: rgba(32, 201, 151, 0.1);
+}
+
+.header-actions button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.header-actions button:hover {
+    color: var(--cyan-main);
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* --- Ad Banner (Same as before) --- */
+.ad-banner {
+    background-color: var(--baby-blue-accent);
+    color: var(--dark-text);
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.ad-banner p {
+    margin: 0;
+}
+
+body.dark-mode .ad-banner {
+    background-color: #377b84;
+    color: var(--white);
+}
+
+/* --- Main Content & Sections (Minor adjustments for page content) --- */
+main {
+    padding: 2rem 0;
+}
+
+section {
+    margin-bottom: 3rem;
+    background-color: var(--section-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: background-color 0.3s ease;
+}
+
+.page-content {
+    padding: 1rem;
+}
+
+/* For simple pages like About */
+.page-content h2,
+.blog-listing-section h2 {
+    margin-bottom: 1.5rem;
+}
+
+/* --- Articles Grid (Same as before) --- */
+.articles-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.featured-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.regular-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+@media (min-width: 992px) {
+    .featured-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    .regular-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* --- News Card (Updated for clickable image link) --- */
+.news-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card-image-link {
+    /* Wrapper for image to make it clickable */
+    display: block;
+    /* Important for proper layout */
+    text-decoration: none;
+}
+
+.card-image-placeholder {
+    background-color: var(--baby-blue-light);
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 Aspect Ratio */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-text);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.card-image-m {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body.dark-mode .card-image-placeholder {
+    background-color: #3c4a5f;
+}
+
+.news-card.large-card {
+    /* Styling for large featured card, some parts are combined here */
+}
+
+@media (min-width: 992px) {
+    .news-card.large-card {
+        grid-column: span 3;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        align-items: stretch;
+    }
+
+    /* Adjust grid columns for better balance */
+    .news-card.large-card .card-image-link,
+    .news-card.large-card .card-image-placeholder {
+        height: 100%;
+        padding-top: 0;
+    }
+
+    .news-card.large-card .card-image-placeholder {
+        /* Specific styling if needed for direct image */
+    }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .news-card.large-card {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 767px) {
+    .news-card.large-card {
+        grid-column: span 1;
+    }
+
+    .news-card.large-card .card-image-placeholder {
+        padding-top: 56.25%;
+    }
+}
+
+.card-content {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3,
+.card-content h4 {
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+    font-size: 1.2rem;
+}
+
+.news-card.large-card .card-content h3 {
+    font-size: 1.75rem;
+}
+
+.card-content h3 a,
+.card-content h4 a {
+    color: var(--text-color);
+}
+
+.card-content h3 a:hover,
+.card-content h4 a:hover {
+    color: var(--cyan-main);
+}
+
+.category-tag {
+    display: inline-block;
+    background-color: var(--cyan-main);
+    color: var(--white);
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+}
+
+body.dark-mode .category-tag {
+    background-color: var(--baby-blue-accent);
+    color: var(--dark-text);
+}
+
+.excerpt {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    margin-bottom: 0.75em;
+    flex-grow: 1;
+}
+
+body.dark-mode .excerpt {
+    color: #a0aec0;
+}
+
+.article-meta {
+    font-size: 0.8rem;
+    color: var(--gray-text);
+    margin-top: auto;
+}
+
+body.dark-mode .article-meta {
+    color: #718096;
+}
+
+/* --- Article Detail Page --- */
+.article-container {
+    max-width: 800px;
+}
+
+/* Narrower for readability */
+.article-full .article-header {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.article-full .article-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5em;
+    color: var(--text-color);
+}
+
+@media (min-width: 768px) {
+    .article-full .article-header h1 {
+        font-size: 2.8rem;
+    }
+}
+
+.article-meta-full {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    margin-bottom: 1.5rem;
+}
+
+.article-meta-full span {
+    margin-right: 15px;
+}
+
+.article-meta-full .category-tag {
+    margin-right: 10px;
+    font-size: 0.8rem;
+}
+
+body.dark-mode .article-meta-full {
+    color: #a0aec0;
+}
+
+.article-image-placeholder-full,
+.featured-image-full {
+    width: 100%;
+    background-color: var(--baby-blue-light);
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    /* If using placeholder div: */
+    min-height: 300px;
+    /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-text);
+    font-style: italic;
+}
+
+body.dark-mode .article-image-placeholder-full {
+    background-color: #3c4a5f;
+}
+
+.featured-image-full {
+    /* If using actual <img> */
+    display: block;
+    height: auto;
+    object-fit: cover;
+}
+
+.article-content-full {
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.article-content-full p {
+    margin-bottom: 1.2em;
+}
+
+.article-content-full h2 {
+    font-size: 1.8rem;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.3em;
+}
+
+.article-content-full h3 {
+    font-size: 1.4rem;
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+}
+
+.article-content-full ul,
+.article-content-full ol {
+    margin-bottom: 1.2em;
+    padding-left: 25px;
+}
+
+.article-content-full li {
+    margin-bottom: 0.5em;
+}
+
+.article-content-full blockquote {
+    border-left: 4px solid var(--cyan-main);
+    margin: 1.5em 0;
+    padding: 0.5em 1em;
+    background-color: var(--baby-blue-light);
+    font-style: italic;
+}
+
+body.dark-mode .article-content-full blockquote {
+    background-color: #2d3748;
+}
+
+.article-content-full img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 1em 0;
+}
+
+
+/* --- Contact Form --- */
+.contact-form {
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--cyan-main);
+    box-shadow: 0 0 0 0.2rem rgba(32, 201, 151, 0.25);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-submit {
+    background-color: var(--cyan-main);
+    color: var(--white);
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #1aa07f;
+    /* Darker cyan */
+}
+
+.error-message {
+    display: block;
+    color: var(--danger-color);
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}
+
+.form-feedback {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    display: none;
+    /* Shown by JS */
+}
+
+.form-feedback.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+
+.form-feedback.error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
+
+
+/* --- Footer (Same as before) --- */
+footer {
+    background-color: var(--header-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--text-color);
+    margin: 0 10px;
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--cyan-main);
+}
+
+/* --- Responsive Adjustments (Mainly Nav, slightly updated) --- */
+@media (max-width: 992px) {
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--header-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: var(--shadow);
+        border-top: 1px solid var(--border-color);
+        padding: 1rem 0;
+    }
+
+    .main-nav.active {
+        display: flex;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-nav ul li {
+        margin: 0;
+        text-align: center;
+    }
+
+    .main-nav ul li a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .main-nav ul li:last-child a {
+        border-bottom: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Removed header wrap and order for simplicity, as menu takes full width */
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .article-full .article-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stack cards */
+    .news-card.large-card {
+        grid-template-columns: 1fr;
+    }
+
+    .news-card.large-card .card-image-link,
+    .news-card.large-card .card-image-placeholder {
+        height: auto;
+        padding-top: 56.25%;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+}
